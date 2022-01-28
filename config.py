@@ -4,13 +4,14 @@ import pygame as pg
 
 TILE_SIZE = 64
 WIN_SIZE = (800, 600)
-# WIN_SIZE = (1920, 1080)
 FPS = 60
 
 
 current_dir = os.path.dirname(__file__)
 assets = os.path.join(current_dir, 'assets')
 lvls = os.path.join(current_dir, 'lvls')
+
+ICON = os.path.join(current_dir, "icon.ico")
 
 ASSETS_MENU_DIR = os.path.join(assets, "menu")
 

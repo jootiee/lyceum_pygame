@@ -16,6 +16,9 @@ class Menu:
         self.text = ['Нажмите "Пробел" для подтверждения выбора']
         self.game = Game()
 
+        self.icon = pg.image.load(ICON)
+        pg.display.set_icon(self.icon)
+
     def events(self):
         events = pg.event.get()
         for event in events:
