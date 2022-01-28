@@ -15,23 +15,15 @@ class Sprite(pg.sprite.Sprite):
         self.animated = False
         self.collidable = collidable
         self.player = False
+        self.animation_speed = 0.5
 
     def draw(self, surface):
         surface.blit(self.image, self.rect.topleft)
 
     def animation_tick_count(self):
         self.frames += 1
-        if not self.frames % self.animation_speed:
-            if self.tick + 1 > 7:
-                self.tick = 0
-            else:
-                self.tick += 1
-        if self.speed_y < 0:
-            if self.tick == 3:
-                self.tick = 2
-        elif self.speed_y > 0:
-            if self.tick == 7:
-                self.tick = 6
+        if not self.frames % (FPS * self.animation_speed):
+            self.tick = not self.tick
 
     def animation_tick_reset(self):
         self.tick = 0
@@ -52,4 +44,6 @@ class Sprite(pg.sprite.Sprite):
                 self.image = pg.transform.scale(self.pictures['idle_flipped'][self.tick], (self.size, self.size))
             else:
                 self.image = pg.transform.scale(self.pictures['idle'][self.tick], (self.size, self.size))
-    
+
+        if self.speed_y < 0:
+            self.image = pg.transform.scale(self.pictures['back'][self.tick], (self.size, self.size))

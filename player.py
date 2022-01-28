@@ -26,7 +26,6 @@ class Player(Sprite):
         self.speed_y_max = 5.5
         self.x0 = x
         self.y0 = y
-        self.animation_speed = 8       # more is slower
         self.player = True
         self.collidable = False
 
@@ -47,15 +46,8 @@ class Player(Sprite):
         self.rect.x, self.rect.y = x, y
 
     def update(self, up, down, left, right, ms):
-        # method that checks if object consumes consumables
         self.collide_check(ms)
-
-        # count for animation pick
         self.animation_tick_count()
-
-        # print(self.rect.x, self.rect.y)
-
-        # jumping and falling (y movement)
 
         if up == down:
             self.speed_y *= 0.9
